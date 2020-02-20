@@ -1,0 +1,33 @@
+<div class="row ">
+  <div class="col-xl-11 mt-5 ml-5 mr-5  mx-auto">
+    <h1>Cart</h1>
+    <div class="card mt-5">
+      <table class="table">
+        <tr *ngFor="let foodItem of cart.list">
+          <td class="ml-5">{{foodItem.name}}</td>
+          <td><div class="row">
+              <div class="ml-auto">
+                <div class="text-warning mr-1">{{foodItem.price | currency:'INR'}}</div>
+                <a class="nav-link delete-icon cursor hand" (click)="removeFromCart(foodItem.id)">
+                  <i class="material-icons " style="color:black">delete_forever</i>
+                </a>
+              </div>
+            </div></td>
+        </tr>
+        <tr *ngIf="cart.total>0; else elseBlock">
+          <td class="ml-5"><h3>Total</h3></td>
+          <td><div class="row">
+              <div class="ml-auto">
+                <h3 class="text-warning mr-1">{{cart.total | currency:'INR'}}</h3>
+              </div>
+            </div></td> 
+          </tr>
+          <ng-template #elseBlock>
+            <div class="alert alert-danger mt-3 mx-auto">
+                 No items in cart.Use Add to Cart option in &nbsp;&nbsp;<a class="text-primary"  (click)="clickOnAddCart()" routerLink="search-bar/">Menu Items</a>
+            </div>
+          </ng-template>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+                               
+									<div *ngIf=ifAdmin()>
+										<div class="card mt-4 ml-2 mr-2">
+											<img class="card-img-top"
+												src="{{items.image}}"
+												alt="sandwich image">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-8">
+														<h4 class="card-title">{{items.name}}</h4>
+													</div>
+													<div class="ml-auto">
+														<h4 class="text-color">{{items.price | currency:'INR' }}</h4>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-8">
+															<div  *ngIf="isAdmin">
+														<p class="card-text"><span class="badge badge-pill badge-success" *ngIf="items.active">Active</span><span class="badge badge-pill badge-danger"*ngIf="!items.active">InActive</span>&nbsp;{{items.category}}</p>
+														</div>
+													</div>
+													<div class="ml-auto">
+														<i class="material-icons md-30 right" *ngIf="items.freeDelivery">local_shipping</i> <span
+														class="badge badge-info" *ngIf="items.freeDelivery">Free</span>
+					
+													</div>
+					
+					
+												</div>
+												<div class="row mt-4 launch-size" *ngIf="!isAdmin && ifAdmin()">
+													<div class="ml-auto" >
+														<a>
+															<button type="button" class="btn cart" (click)="onAddToCart(items.id)">
+																<i class="material-icons md-10">add_shopping_cart</i> Add to
+																Cart
+															</button>
+														</a>
+					
+													</div>
+												</div>
+												<div class="row mt-4 launch-size" *ngIf="isAdmin">
+														<div class="col-5">
+															<i class="material-icons md-10 launch">access_time</i>Launch
+															<div>{{items.dateOfLaunch | date}}</div>
+														</div>
+														<div class="ml-auto">
+															<a>
+																<button type="button" class="btn cart" [routerLink]="['/edit',items.id]" >
+																	<i class="material-icons md-10">edit</i> Edit
+																	
+																</button>
+															</a>
+						
+														</div>
+									
+					
+											</div>
+					
+					
+										</div>
+										</div>
+										</div>
+										<div *ngIf=!ifAdmin()>
+											<div class="card mt-4 ml-2 mr-2">
+												<img class="card-img-top"
+													src="{{item.image}}"
+													alt="sandwich image">
+												<div class="card-body">
+													<div class="row">
+														<div class="col-8">
+															<h4 class="card-title">{{item.name}}</h4>
+														</div>
+														<div class="ml-auto">
+															<h4 class="text-color">{{item.price | currency:'INR' }}</h4>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-8">
+																<div  *ngIf="isAdmin">
+															<p class="card-text"><span class="badge badge-pill badge-success" *ngIf="item.active">Active</span><span class="badge badge-pill badge-danger"*ngIf="!item.active">InActive</span>&nbsp;{{item.category}}</p>
+															</div>
+														</div>
+														<div class="ml-auto">
+															<i class="material-icons md-30 right" *ngIf="item.freedelivery">local_shipping</i> <span
+															class="badge badge-info" *ngIf="item.freedelivery">Free</span>
+						
+														</div>
+						
+						
+													</div>
+													<div class="row mt-4 launch-size" *ngIf="!isAdmin">
+														<div class="ml-auto" >
+															<a>
+																<button type="button" class="btn cart" (click)="onAddToCart(item.id)">
+																	<i class="material-icons md-10">add_shopping_cart</i> Add to
+																	Cart
+																</button>
+															</a>
+						
+														</div>
+													</div>
+													<div class="row mt-4 launch-size" *ngIf="isAdmin">
+															<div class="col-5">
+																<i class="material-icons md-10 launch">access_time</i>Launch
+																<div>{{item.DateOfLaunch | date:"mediumDate"}}</div>
+															</div>
+															<div class="ml-auto">
+																<a>
+																	<button type="button" class="btn cart" [routerLink]="['/edit',item.id]" >
+																		<i class="material-icons md-10">edit</i> Edit
+																		
+																	</button>
+																</a>
+							
+															</div>
+										
+						
+												</div>
+						
+						
+											</div>
+											</div>
+										</div>
+					
+					
+				
+					
